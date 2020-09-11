@@ -8,6 +8,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import Pagination from "@material-ui/lab/Pagination";
 import OrderFab from "../OrderFAB/OrderFab";
 import CustomBackdrop from "../backdrop/CustomBackdrop";
+import userService from "../../services/UserService";
 const Home = (props) => {
   const [imgBuffer, setImgBuffer] = React.useState("");
   const [products, setProducts] = React.useState([]);
@@ -41,11 +42,8 @@ const Home = (props) => {
   return (
     <div>
       <CustomCarousel></CustomCarousel>
-
+      {userService.isAdmin() ? <Typography>Total: {total}</Typography> : <></>}
       <Grid container spacing={1} align="center" justify="center">
-        <Paper>
-          <Typography>Total: {total}</Typography>
-        </Paper>
         {notFound == false ? (
           products.length != 0 ? (
             products.map((product, index) => {
