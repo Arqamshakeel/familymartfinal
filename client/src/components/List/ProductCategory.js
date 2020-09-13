@@ -95,7 +95,7 @@ const ProductCategory = (props) => {
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        {names.map((item, index) => {
+        {names.sort().map((item, index) => {
           return (
             <List component="div" disablePadding key={index}>
               <ListItem
